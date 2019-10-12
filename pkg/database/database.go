@@ -7,8 +7,12 @@ import (
 	"strconv"
 
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/golang-migrate/migrate/v4"
 	"github.com/rodsher/selectel/pkg/config"
+	"github.com/rodsher/selectel/pkg/model"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 )
 
 // GetInstance returns pointer to an instance of gorm.DB structure.
@@ -25,7 +29,8 @@ var db *gorm.DB
 func Init() {
 	open()
 	setup()
-	migrate()
+	autoMigrate()
+	seed()
 }
 
 // open function builds connection string for a database and tries to open connection
@@ -43,8 +48,27 @@ func open() {
 	db = database
 }
 
-func migrate() {
-	db.AutoMigrate()
+func autoMigrate() {
+	db.AutoMigrate(&model.User{})
+}
+
+func seed() {
+	conf := config.GetInstance().Database
+	url := concatDBMigrationURL()
+	m, err := migrate.New(conf.MigrationsURL, url)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = m.Up()
+	if err != nil {
+		if err.Error() == "no change" {
+			log.Println("Seeders up to date")
+			return
+		}
+
+		log.Fatal(err)
+	}
 }
 
 func setup() {
@@ -56,4 +80,11 @@ func connStrFromConf(c config.DatabaseConfig) string {
 	port := strconv.Itoa(int(c.Port))
 	connStr := "host=%s port=%s user=%s dbname=%s password=%s"
 	return fmt.Sprintf(connStr, c.Host, port, c.Username, c.Name, c.Password)
+}
+
+func concatDBMigrationURL() string {
+	conf := config.GetInstance().Database
+	port := strconv.Itoa(conf.Port)
+	url := "postgres://%s:%s@%s:%s/%s?sslmode=disable"
+	return fmt.Sprintf(url, conf.Username, conf.Password, conf.Host, port, conf.Name)
 }
