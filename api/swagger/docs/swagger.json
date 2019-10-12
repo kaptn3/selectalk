@@ -1,0 +1,28 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Awesome platform.",
+        "title": "Hack Innovation",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "email": "isaevm2@yandex.ru"
+        },
+        "license": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/ping": {
+            "get": {
+                "description": "ping",
+                "summary": "Ping",
+                "responses": {
+                    "200": {},
+                    "400": {}
+                }
+            }
+        }
+    }
+}

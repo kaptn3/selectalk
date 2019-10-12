@@ -1,0 +1,20 @@
+basePath: /api/v1
+host: localhost:8080
+info:
+  contact:
+    email: isaevm2@yandex.ru
+    name: API Support
+  description: Awesome platform.
+  license: {}
+  termsOfService: http://swagger.io/terms/
+  title: Hack Innovation
+  version: "1.0"
+paths:
+  /ping:
+    get:
+      description: ping
+      responses:
+        "200": {}
+        "400": {}
+      summary: Ping
+swagger: "2.0"
