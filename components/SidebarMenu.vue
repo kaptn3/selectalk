@@ -5,35 +5,46 @@
         v-for="item in menu"
         :key="item.name"
       >
-        <nuxt-link :to="item.link">
-          {{ item.name }}
-        </nuxt-link>
+        <sidebar-menu-item
+          :name="item.name"
+          :link="item.link"
+          :icon="item.icon"
+        />
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
+  import SidebarMenuItem from './SidebarMenuItem';
+
   export default {
     name: 'SidebarMenu',
+    components: {
+      SidebarMenuItem
+    },
     data() {
       return {
         menu: [
           {
             link: '#',
-            name: 'Достижения'
+            name: 'Достижения',
+            icon: '/icons/menu/achievement.png'
           },
           {
             link: '#',
-            name: 'Календарь'
+            name: 'Календарь',
+            icon: '/icons/menu/calendar.png'
           },
           {
             link: '#',
-            name: 'Документы'
+            name: 'Документы',
+            icon: ''
           },
           {
             link: '#',
-            name: 'Новости'
+            name: 'Новости',
+            icon: ''
           }
         ]
       }
@@ -44,19 +55,6 @@
 <style scoped>
   ul {
     list-style: none;
-    padding: 1rem;
-  }
-
-  li {
-    margin-bottom: 3rem;
-  }
-
-  a {
-    opacity: .7;
-  }
-
-  a:hover,
-  a:focus {
-    opacity: 1;
+    padding: 0;
   }
 </style>

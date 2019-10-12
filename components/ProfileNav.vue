@@ -15,9 +15,11 @@
           v-for="item in menu"
           :key="item.name"
         >
-          <nuxt-link :to="item.link">
-            {{ item.name }}
-          </nuxt-link>
+          <sidebar-menu-item
+            :name="item.name"
+            :link="item.link"
+            :icon="item.icon"
+          />
         </li>
       </ul>
     </nav>
@@ -26,20 +28,26 @@
 
 <script>
   import Badge from './Badge';
+  import SidebarMenuItem from './SidebarMenuItem';
 
   export default {
     name: 'ProfileNav',
-    components: { Badge },
+    components: {
+      Badge,
+      SidebarMenuItem
+    },
     data() {
       return {
         menu: [
           {
             name: 'Мои задания',
-            link: '#'
+            link: '#',
+            icon: '/icons/menu/task.png'
           },
           {
             name: 'Мои курсы',
-            link: '#'
+            link: '#',
+            icon: '/icons/menu/course.png'
           }
         ]
       };
@@ -70,20 +78,8 @@
   }
 
   ul {
-    padding: 2rem 1rem;
     list-style: none;
-  }
-
-  li {
-    margin-bottom: 3rem;
-  }
-
-  a {
-    opacity: .7;
-  }
-
-  a:hover,
-  a:focus {
-    opacity: 1;
+    padding: 0;
+    margin-bottom: 2rem;
   }
 </style>
