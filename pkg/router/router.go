@@ -27,7 +27,8 @@ func Init() *gin.Engine {
 	v1 := r.Group("/api/v1")
 	{
 		v1.GET("/ping", controller.Ping)
-
+		v1.GET("/users/:id", controller.GetUser)
+		v1.GET("/tasks", controller.GetTasks)
 	}
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
