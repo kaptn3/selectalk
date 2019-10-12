@@ -27,6 +27,16 @@
       return {
         menu: [
           {
+            name: 'Мои задания',
+            link: 'tasks',
+            icon: '/icons/menu/task.png'
+          },
+          {
+            name: 'Мои курсы',
+            link: 'courses',
+            icon: '/icons/menu/course.png'
+          },
+          {
             link: 'achieves',
             name: 'Достижения',
             icon: '/icons/menu/achievement.png'
