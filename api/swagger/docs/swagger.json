@@ -5,6 +5,28 @@
         "license": {}
     },
     "paths": {
+        "/achievements": {
+            "get": {
+                "description": "Retrieve list of courses.",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get list of courses.",
+                "operationId": "get-courses",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.Course"
+                            }
+                        }
+                    },
+                    "400": {}
+                }
+            }
+        },
         "/ping": {
             "get": {
                 "description": "ping",
@@ -17,14 +39,11 @@
         },
         "/tasks/{user_id}": {
             "get": {
-                "description": "Retrieve list of tasks.",
-                "consumes": [
-                    "application/json"
-                ],
+                "description": "Retrieve list of tasks using user identifier.",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Get list of tasks.",
+                "summary": "Get list of tasks by user identifier.",
                 "operationId": "get-tasks",
                 "parameters": [
                     {
@@ -44,7 +63,8 @@
                                 "$ref": "#/definitions/model.Task"
                             }
                         }
-                    }
+                    },
+                    "400": {}
                 }
             }
         },
@@ -81,6 +101,9 @@
         "model.Achievement": {
             "type": "object",
             "properties": {
+                "cost": {
+                    "type": "number"
+                },
                 "createdAt": {
                     "type": "string"
                 },
@@ -98,9 +121,32 @@
                 },
                 "updatedAt": {
                     "type": "string"
+                }
+            }
+        },
+        "model.Course": {
+            "type": "object",
+            "properties": {
+                "award": {
+                    "type": "number"
                 },
-                "userID": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                },
+                "id": {
                     "type": "integer"
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
                 }
             }
         },
@@ -195,12 +241,6 @@
             "properties": {
                 "account": {
                     "type": "string"
-                },
-                "achievement": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/model.Achievement"
-                    }
                 },
                 "balance": {
                     "type": "number"
