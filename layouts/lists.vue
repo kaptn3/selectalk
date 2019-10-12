@@ -2,10 +2,10 @@
   <div class="app">
     <sidebar class="app__sidebar"/>
     <app-header
-      :is-profile="$route.name == 'index'"
+      :is-profile="$route.name == 'profile'"
       class="app__header"
     />
-    <main class="app__main">
+    <main class="app__lists">
       <tabs/>
       <nuxt/>
     </main>
@@ -50,6 +50,9 @@
 
   .app__main {
     grid-area: main;
-    margin-top: 30px;
+  }
+
+  .app__lists {
+    padding: 30px 102px;
   }
 </style>

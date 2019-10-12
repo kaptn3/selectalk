@@ -53,6 +53,7 @@
     padding: 0;
     border-bottom: 1px solid rgba(53, 53, 71, .1);
     padding: 0 102px;
+    margin: 0 -102px;
   }
 
   .tabs__item {
