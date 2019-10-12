@@ -7,6 +7,6 @@
 <style scoped>
   a {
     display: block;
-    padding: 1.4rem;
+    padding: 1.5rem 1.4rem;
   }
 </style>

@@ -27,6 +27,7 @@
       'sidebar header'
       'sidebar main';
     grid-template-columns: 245px 1fr;
+    grid-template-rows: 72px 1fr;
   }
 
   .app__sidebar {
