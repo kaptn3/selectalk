@@ -1,55 +1,43 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="app">
+    <sidebar class="app__sidebar"/>
+    <app-header class="app__header"/>
+    <main class="app__main">
+      <nuxt/>
+    </main>
   </div>
 </template>
 
+<script>
+  import Sidebar from '../components/Sidebar';
+  import AppHeader from '../components/AppHeader';
+
+  export default {
+    components: {
+      Sidebar,
+      AppHeader
+    }
+  }
+</script>
+
 <style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+  .app {
+    display: grid;
+    grid-template-areas:
+      'sidebar header'
+      'sidebar main';
+    grid-template-columns: 245px 1fr;
+  }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
+  .app__sidebar {
+    grid-area: sidebar;
+  }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
+  .app__header {
+    grid-area: header;
+  }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
+  .app__main {
+    grid-area: main;
+  }
 </style>
