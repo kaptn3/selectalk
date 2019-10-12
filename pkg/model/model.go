@@ -3,16 +3,18 @@ package model
 import (
 	"github.com/jinzhu/gorm"
 	"github.com/jinzhu/gorm/dialects/postgres"
+	"time"
 )
 
 type (
 	User struct {
 		gorm.Model
-		Balance     float64        `json:"balance"`
-		Account     string         `gorm:"type:varchar(36);not_null" json:"account"`
-		Skill       postgres.Jsonb `json:"skill"`
-		Position    string         `json:"position"`
-		Department  string         `gorm:"type:varchar(32);unique;not_null;unique_index" json:"department"`
+		Name        string `gorm:"type:varchar(255);not_null"`
+		Balance     float64
+		Account     string `gorm:"type:varchar(36);not_null"`
+		Skill       postgres.Jsonb
+		Position    string
+		Department  string `gorm:"type:varchar(32);not_null"`
 		Achievement []Achievement
 		Tasks       []Task
 	}
@@ -20,6 +22,8 @@ type (
 		gorm.Model
 		Name           string `gorm:"type:varchar(255);not_null"`
 		Score          int    `gorm:"not_null"`
+		ExpirationDate time.Time
+		ManagerID      uint
 		UserID         uint
 		TaskPriorityID uint
 		TaskPriority   TaskPriority
@@ -38,7 +42,8 @@ type (
 	}
 	Achievement struct {
 		gorm.Model
-		Name string `gorm:"type:varchar(255);not_null" json:"name"`
-		UserID uint
+		Name           string `gorm:"type:varchar(255);not_null" json:"name"`
+		ExpirationDate time.Time
+		UserID         uint
 	}
 )
