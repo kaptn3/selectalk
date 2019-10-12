@@ -35,12 +35,14 @@
   }
 
   a:hover,
-  a:focus {
+  a:focus,
+  .nuxt-link-active {
     opacity: 1;
     background-color: #3B3A44;
   }
 
-  .icon {
+  .icon,
+  .nuxt-link-active .icon {
     opacity: 0;
     width: 46px;
     height: 46px;
@@ -52,7 +54,8 @@
   }
 
   a:hover .icon,
-  a:focus .icon {
+  a:focus .icon,
+  .nuxt-link-active {
     opacity: 1;
   }
 </style>

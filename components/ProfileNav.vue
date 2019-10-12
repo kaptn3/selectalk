@@ -1,12 +1,15 @@
 <template>
   <div class="profile-nav">
-    <div class="profile-nav__top">
+    <nuxt-link
+      class="profile-nav__top"
+      to="/profile"
+    >
       <profile-avatar/>
       <div>
         <span class="profile-nav__name">Тирекс Селектел</span>
         <badge name="Мастер"/>
       </div>
-    </div>
+    </nuxt-link>
     <nav>
       <ul>
         <li
@@ -41,7 +44,7 @@
         menu: [
           {
             name: 'Мои задания',
-            link: '#',
+            link: '/tasks',
             icon: '/icons/menu/task.png'
           },
           {
@@ -57,7 +60,6 @@
 
 <style scoped>
   .profile-nav__top {
-    background-color: #3B3A44;
     display: flex;
     padding: 1.4rem;
   }
@@ -66,5 +68,9 @@
     list-style: none;
     padding: 0;
     margin-bottom: 2rem;
+  }
+
+  .nuxt-link-active {
+    background-color: #3B3A44;
   }
 </style>
