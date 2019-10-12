@@ -23,3 +23,22 @@ func (s UserService) GetByID(id int) (model.User, error) {
 
 	return user, nil
 }
+
+type TaskService struct {
+	repo *repository.TaskRepository
+}
+
+func NewTaskService() *TaskService {
+	return &TaskService{
+		repo:repository.NewTaskRepository(),
+	}
+}
+
+func (s *TaskService) GetByUserID(id int) ([]model.Task, error) {
+	tasks, err := s.repo.FindByUserID(id)
+	if err != nil {
+		return tasks, err
+	}
+
+	return tasks, nil
+}
