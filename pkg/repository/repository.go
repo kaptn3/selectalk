@@ -45,3 +45,43 @@ func (r TaskRepository) FindByUserID(userID int) ([]model.Task, error) {
 
 	return tasks, nil
 }
+
+type AchievementRepository struct {
+	db *gorm.DB
+}
+
+func NewAchievementRepository() *AchievementRepository {
+	return &AchievementRepository{
+		db: database.GetInstance(),
+	}
+}
+
+func (r *AchievementRepository) Find() ([]model.Achievement, error) {
+	var achievements []model.Achievement
+	res := r.db.Find(&achievements)
+	if res.Error != nil {
+		return achievements, res.Error
+	}
+
+	return achievements, nil
+}
+
+type CourseRepository struct {
+	db *gorm.DB
+}
+
+func NewCourseRepository() *CourseRepository {
+	return &CourseRepository{
+		db: database.GetInstance(),
+	}
+}
+
+func (r *CourseRepository) Find() ([]model.Course, error) {
+	var courses []model.Course
+	res := r.db.Find(&courses)
+	if res.Error != nil {
+		return courses, res.Error
+	}
+
+	return courses, nil
+}

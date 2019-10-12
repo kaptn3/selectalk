@@ -1,9 +1,10 @@
 package model
 
 import (
+	"time"
+
 	"github.com/jinzhu/gorm"
 	"github.com/jinzhu/gorm/dialects/postgres"
-	"time"
 )
 
 type (
@@ -15,7 +16,6 @@ type (
 		Skill       postgres.Jsonb
 		Position    string
 		Department  string `gorm:"type:varchar(32);not_null"`
-		Achievement []Achievement
 		Tasks       []Task
 	}
 	Task struct {
@@ -39,11 +39,15 @@ type (
 		Status string `gorm:"type:varchar(16);not_null"`
 	}
 	Course struct {
+		gorm.Model
+		Name  string `gorm:"type:varchar(255);not_null"`
+		Award float64
+		Kind string `gorm:"type:varchar(255);not_null"`
 	}
 	Achievement struct {
 		gorm.Model
-		Name           string `gorm:"type:varchar(255);not_null" json:"name"`
+		Name           string `gorm:"type:varchar(255);not_null"`
 		ExpirationDate time.Time
-		UserID         uint
+		Cost           float64
 	}
 )

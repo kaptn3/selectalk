@@ -54,6 +54,8 @@ func autoMigrate() {
 		&model.TaskPriority{},
 		&model.TaskStatus{},
 		&model.Task{},
+		&model.Achievement{},
+		&model.Course{},
 	)
 }
 

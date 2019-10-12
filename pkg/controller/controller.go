@@ -53,29 +53,67 @@ func GetUser(c *gin.Context) {
 	})
 }
 
-type TaskParam struct {
-	UserID int `json:"user_id" binding:"required;gte=0"`
-}
-
 // Task godoc
-// @Summary Get list of tasks.
-// @Description Retrieve list of tasks.
+// @Summary Get list of tasks by user identifier.
+// @Description Retrieve list of tasks using user identifier.
 // @ID get-tasks
-// @Accept json
 // @Produce json
-// @Param user_id body TaskParam true "User ID"
+// @Param user_id path int true "User ID"
 // @Success 200 {array} model.Task
-// @Router /tasks [get]
+// @Failure 400
+// @Router /tasks/{user_id} [get]
 func GetTasks(c *gin.Context) {
-	var param TaskParam
-	c.BindJSON(&param)
+	param := c.Param("user_id")
+	id, err := strconv.Atoi(param)
+	if err != nil {
+		c.AbortWithError(http.StatusBadRequest, err)
+		return
+	}
 
 	s := service.NewTaskService()
-	tasks, err := s.GetByUserID(param.UserID)
+	tasks, err := s.GetByUserID(id)
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)
 		return
 	}
 
 	c.JSON(http.StatusOK, tasks)
+}
+
+// Achievement godoc
+// @Summary Get list of achievements by user id.
+// @Description Retrieve list of achievements using user identifier.
+// @ID get-achievements
+// @Produce json
+// @Success 200 {array} model.Achievement
+// @Failure 400
+// @Router /achievements [get]
+func GetAchievements(c *gin.Context) {
+	s := service.NewAchievementService()
+	achievements, err := s.Get()
+	if err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, achievements)
+}
+
+// Course godoc
+// @Summary Get list of courses.
+// @Description Retrieve list of courses.
+// @ID get-courses
+// @Produce json
+// @Success 200 {array} model.Course
+// @Failure 400
+// @Router /achievements [get]
+func GetCourses(c *gin.Context) {
+	s := service.NewCourseService()
+	courses, err := s.Get()
+	if err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, courses)
 }

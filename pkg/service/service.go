@@ -42,3 +42,41 @@ func (s *TaskService) GetByUserID(id int) ([]model.Task, error) {
 
 	return tasks, nil
 }
+
+type AchievementService struct {
+	repo *repository.AchievementRepository
+}
+
+func NewAchievementService() *AchievementService {
+	return &AchievementService{
+		repo: repository.NewAchievementRepository(),
+	}
+}
+
+func (s *AchievementService) Get() ([]model.Achievement, error) {
+	achievements, err := s.repo.Find()
+	if err != nil {
+		return achievements, err
+	}
+
+	return achievements, nil
+}
+
+type CourseService struct {
+	repo *repository.CourseRepository
+}
+
+func NewCourseService() *CourseService {
+	return &CourseService{
+		repo: repository.NewCourseRepository(),
+	}
+}
+
+func (s *CourseService) Get() ([]model.Course, error) {
+	courses, err := s.repo.Find()
+	if err != nil {
+		return courses, err
+	}
+
+	return courses, nil
+}
