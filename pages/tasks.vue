@@ -1,5 +1,6 @@
 <template>
   <div>
+    <add-task/>
     <header class="tasks__header">
       <span class="tasks__index">Приоритет</span>
       <span class="tasks__title">Тема задания</span>
@@ -21,12 +22,14 @@
 </template>
 
 <script>
+  import AddTask from '../components/tasks/AddTask';
   import TaskItem from '../components/tasks/TaskItem';
 
   export default {
     layout: 'lists',
     components: {
-      TaskItem
+      TaskItem,
+      AddTask
     },
     data() {
       return {
