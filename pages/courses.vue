@@ -1,6 +1,6 @@
 <template>
   <div>
-    Задания
+    Курсы
   </div>
 </template>
 

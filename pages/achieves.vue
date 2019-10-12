@@ -1,6 +1,6 @@
 <template>
   <div>
-    Задания
+    Достижения
   </div>
 </template>
 

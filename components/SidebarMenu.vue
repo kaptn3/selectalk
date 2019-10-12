@@ -27,22 +27,22 @@
       return {
         menu: [
           {
-            link: '#',
+            link: 'achieves',
             name: 'Достижения',
             icon: '/icons/menu/achievement.png'
           },
           {
-            link: '#',
+            link: 'calendar',
             name: 'Календарь',
             icon: '/icons/menu/calendar.png'
           },
           {
-            link: '#',
+            link: 'docs',
             name: 'Документы',
             icon: ''
           },
           {
-            link: '#',
+            link: 'news',
             name: 'Новости',
             icon: ''
           }

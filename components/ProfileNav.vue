@@ -44,12 +44,12 @@
         menu: [
           {
             name: 'Мои задания',
-            link: '/tasks',
+            link: 'tasks',
             icon: '/icons/menu/task.png'
           },
           {
             name: 'Мои курсы',
-            link: '#',
+            link: 'courses',
             icon: '/icons/menu/course.png'
           }
         ]

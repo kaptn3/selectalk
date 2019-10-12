@@ -1,6 +1,6 @@
 <template>
   <div>
-    Задания
+    Календарь
   </div>
 </template>
 
