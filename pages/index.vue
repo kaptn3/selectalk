@@ -1,8 +1,21 @@
 <template>
-  <div class="container">
-    SelecTalk
+  <div>
+    <top/>
+    <div class="container">
+      SelecTalk
+    </div>
   </div>
 </template>
+
+<script>
+  import Top from '../components/profile/Top';
+
+  export default {
+    components: {
+      Top
+    }
+  };
+</script>
 
 <style>
 .container {

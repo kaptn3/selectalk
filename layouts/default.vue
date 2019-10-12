@@ -1,7 +1,10 @@
 <template>
   <div class="app">
     <sidebar class="app__sidebar"/>
-    <app-header class="app__header"/>
+    <app-header
+      :is-profile="$route.name == 'index'"
+      class="app__header"
+    />
     <main class="app__main">
       <nuxt/>
     </main>

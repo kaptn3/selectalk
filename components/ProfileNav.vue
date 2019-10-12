@@ -1,9 +1,7 @@
 <template>
   <div class="profile-nav">
     <div class="profile-nav__top">
-      <div class="profile-nav__avatar">
-        <img src="/photo.jpg" alt="">
-      </div>
+      <profile-avatar/>
       <div>
         <span class="profile-nav__name">Тирекс Селектел</span>
         <badge name="Мастер"/>
@@ -29,12 +27,14 @@
 <script>
   import Badge from './Badge';
   import SidebarMenuItem from './SidebarMenuItem';
+  import ProfileAvatar from './ProfileAvatar';
 
   export default {
     name: 'ProfileNav',
     components: {
       Badge,
-      SidebarMenuItem
+      SidebarMenuItem,
+      ProfileAvatar
     },
     data() {
       return {
@@ -60,21 +60,6 @@
     background-color: #3B3A44;
     display: flex;
     padding: 1.4rem;
-  }
-
-  .profile-nav__avatar {
-    border-radius: 100%;
-    width: 46px;
-    height: 46px;
-    flex-shrink: 0;
-    overflow: hidden;
-    margin-right: 10px;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   ul {

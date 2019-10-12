@@ -1,5 +1,8 @@
 <template>
-  <header :class="{ 'profile__header': isProfile }">
+  <header
+    :class="{ 'profile__header': isProfile }"
+    class="header"
+  >
     <ul>
       <button/>
       <li
@@ -66,7 +69,7 @@
     margin: 1.5rem;
   }
 
-  header {
+  .header {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, .15);
   }
@@ -74,5 +77,6 @@
   .profile__header {
     background-color: transparent;
     box-shadow: none;
+    z-index: 9;
   }
 </style>
