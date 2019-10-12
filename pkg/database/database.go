@@ -49,7 +49,12 @@ func open() {
 }
 
 func autoMigrate() {
-	db.AutoMigrate(&model.User{})
+	db.AutoMigrate(
+		&model.User{},
+		&model.TaskPriority{},
+		&model.TaskStatus{},
+		&model.Task{},
+	)
 }
 
 func seed() {
