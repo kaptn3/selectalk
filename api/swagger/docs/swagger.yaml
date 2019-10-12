@@ -1,14 +1,84 @@
-basePath: /api/v1
-host: localhost:8080
+definitions:
+  model.Task:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      score:
+        type: integer
+      taskPriority:
+        $ref: '#/definitions/model.TaskPriority'
+        type: object
+      taskPriorityID:
+        type: integer
+      taskStatus:
+        $ref: '#/definitions/model.TaskStatus'
+        type: object
+      taskStatusID:
+        type: integer
+      updatedAt:
+        type: string
+      userID:
+        type: integer
+    type: object
+  model.TaskPriority:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      priority:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  model.TaskStatus:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      status:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  model.User:
+    properties:
+      balance:
+        type: number
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      department:
+        type: string
+      id:
+        type: integer
+      skill:
+        $ref: '#/definitions/postgres.Jsonb'
+        type: object
+      tasks:
+        items:
+          $ref: '#/definitions/model.Task'
+        type: array
+      updatedAt:
+        type: string
+    type: object
+  postgres.Jsonb:
+    type: object
 info:
-  contact:
-    email: isaevm2@yandex.ru
-    name: API Support
-  description: Awesome platform.
+  contact: {}
   license: {}
-  termsOfService: http://swagger.io/terms/
-  title: Hack Innovation
-  version: "1.0"
 paths:
   /ping:
     get:
@@ -17,4 +87,14 @@ paths:
         "200": {}
         "400": {}
       summary: Ping
+  /users:
+    get:
+      operationId: get-user
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.User'
+        "400": {}
+      summary: Get user.
 swagger: "2.0"
