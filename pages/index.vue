@@ -1,6 +1,7 @@
 <template>
   <div>
     <top/>
+    <skills/>
     <div class="container">
       SelecTalk
     </div>
@@ -9,10 +10,12 @@
 
 <script>
   import Top from '../components/profile/Top';
+  import Skills from '../components/profile/Skills';
 
   export default {
     components: {
-      Top
+      Top,
+      Skills
     }
   };
 </script>
