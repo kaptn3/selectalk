@@ -15,10 +15,20 @@
                 }
             }
         },
-        "/users": {
+        "/users/{id}": {
             "get": {
+                "description": "Retrieve a user info.",
                 "summary": "Get user.",
                 "operationId": "get-user",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -32,6 +42,29 @@
         }
     },
     "definitions": {
+        "model.Achievement": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "userID": {
+                    "type": "integer"
+                }
+            }
+        },
         "model.Task": {
             "type": "object",
             "properties": {
@@ -115,6 +148,15 @@
         "model.User": {
             "type": "object",
             "properties": {
+                "account": {
+                    "type": "string"
+                },
+                "achievement": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Achievement"
+                    }
+                },
                 "balance": {
                     "type": "number"
                 },
@@ -129,6 +171,9 @@
                 },
                 "id": {
                     "type": "integer"
+                },
+                "position": {
+                    "type": "string"
                 },
                 "skill": {
                     "type": "object",
