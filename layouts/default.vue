@@ -8,17 +8,20 @@
     <main class="app__main">
       <nuxt/>
     </main>
+    <chat/>
   </div>
 </template>
 
 <script>
   import Sidebar from '../components/Sidebar';
   import AppHeader from '../components/AppHeader';
+  import Chat from '../components/Chat';
 
   export default {
     components: {
       Sidebar,
-      AppHeader
+      AppHeader,
+      Chat
     }
   }
 </script>
