@@ -28,7 +28,7 @@ func Init() *gin.Engine {
 	{
 		v1.GET("/ping", controller.Ping)
 		v1.GET("/users/:id", controller.GetUser)
-		v1.GET("/tasks", controller.GetTasks)
+		v1.GET("/tasks/:user_id", controller.GetTasks)
 	}
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
