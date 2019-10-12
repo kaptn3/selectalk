@@ -15,9 +15,45 @@
                 }
             }
         },
+        "/tasks/{user_id}": {
+            "get": {
+                "description": "Retrieve list of tasks.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get list of tasks.",
+                "operationId": "get-tasks",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.Task"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/users/{id}": {
             "get": {
                 "description": "Retrieve a user info.",
+                "produces": [
+                    "application/json"
+                ],
                 "summary": "Get user.",
                 "operationId": "get-user",
                 "parameters": [
@@ -51,6 +87,9 @@
                 "deletedAt": {
                     "type": "string"
                 },
+                "expirationDate": {
+                    "type": "string"
+                },
                 "id": {
                     "type": "integer"
                 },
@@ -74,7 +113,13 @@
                 "deletedAt": {
                     "type": "string"
                 },
+                "expirationDate": {
+                    "type": "string"
+                },
                 "id": {
+                    "type": "integer"
+                },
+                "managerID": {
                     "type": "integer"
                 },
                 "name": {
@@ -171,6 +216,9 @@
                 },
                 "id": {
                     "type": "integer"
+                },
+                "name": {
+                    "type": "string"
                 },
                 "position": {
                     "type": "string"
