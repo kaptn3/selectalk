@@ -1,11 +1,8 @@
 
 export default {
   mode: 'spa',
-  server: {
-    host: '176.223.130.249'
-  },
   env: {
-    api: process.env.API_URL || '/api/'
+    api: process.env.API_URL || 'http://46.182.24.193/api/v1/'
   },
   /*
   ** Headers of the page
