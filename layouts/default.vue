@@ -2,7 +2,7 @@
   <div class="app">
     <sidebar class="app__sidebar"/>
     <app-header
-      :is-profile="$route.name == 'profile' || 'rating'"
+      :is-profile="$route.name == 'profile' || $route.name == 'rating'"
       class="app__header"
     />
     <main class="app__main">
