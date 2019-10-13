@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tasks">
     <add-task/>
     <header class="tasks__header">
       <span class="tasks__index">Приоритет</span>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+  import axios from 'axios';
   import AddTask from '../components/tasks/AddTask';
   import TaskItem from '../components/tasks/TaskItem';
 
@@ -33,47 +34,42 @@
     },
     data() {
       return {
-        tasks: [
-          {
-            index: 1,
-            title: 'Оформить ТЗ',
-            leader: 'Никита',
-            deadline: '13.10.2019',
-            skills: [
-              '/icons/skills/1.svg',
-              '/icons/skills/2.svg'
-            ],
-            points: 200
-          },
-          {
-            index: 2,
-            title: 'Оформить ТЗ',
-            leader: 'Никита',
-            deadline: '13.10.2019',
-            skills: [
-              '/icons/skills/1.svg',
-              '/icons/skills/2.svg'
-            ],
-            points: 200
-          },
-          {
-            index: 3,
-            title: 'Оформить ТЗ',
-            leader: 'Никита',
-            deadline: '13.10.2019',
-            skills: [
-              '/icons/skills/1.svg',
-              '/icons/skills/2.svg'
-            ],
-            points: 200
-          }
-        ]
+        tasks: []
       }
+    },
+    mounted() {
+      axios.get(`${process.env.api}tasks.json`)
+        .then((res) => {
+          for (let i = 0; i < res.data.length; i++) {
+            const data = res.data[i];
+            let date = new Date(data.ExpirationDate);
+            date = `${date.getDate()}.${date.getUTCMonth()}.${date.getUTCFullYear()}`;
+
+            axios.get(`${process.env.api}users/${data.ManagerID}.json`)
+              .then((res2) => {
+                this.tasks.push({
+                  title: data.Name,
+                  points: data.Score,
+                  leader: res2.data.Name,
+                  index: data.TaskPriorityID,
+                  skills: [
+                    '/icons/skills/1.svg',
+                    '/icons/skills/2.svg'
+                  ],
+                  deadline: date
+                })
+              })
+          }
+        });
     }
   };
 </script>
 
 <style scoped>
+  .tasks {
+    overflow: hidden;
+  }
+
   .tasks__header {
     display: flex;
     align-items: center;

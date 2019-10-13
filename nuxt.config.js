@@ -4,6 +4,9 @@ export default {
   server: {
     host: '176.223.130.249'
   },
+  env: {
+    api: process.env.API_URL || '/api/'
+  },
   /*
   ** Headers of the page
   */
