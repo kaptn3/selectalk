@@ -1,5 +1,8 @@
 <template>
-  <div class="task">
+  <div
+    class="task"
+    :style="{ 'transform': `translateX(${left})`, 'display': display }"
+  >
     <div class="task__inner">
       <span class="task__index">
         {{ index }}
@@ -17,7 +20,10 @@
         <button class="task__cancel"/>
       </div>
       <div class="task__action">
-        <button class="task__check"/>
+        <button
+          class="task__check"
+          @click="check"
+        />
       </div>
     </div>
     <div class="task__awards">
@@ -65,6 +71,20 @@
         type: Number,
         required: true
       }
+    },
+    data() {
+      return {
+        left: 0,
+        display: 'block'
+      }
+    },
+    methods: {
+      check() {
+        this.left = '100%';
+        setTimeout(() => {
+          this.display = 'none';
+        }, 300);
+      }
     }
   };
 </script>
@@ -77,6 +97,7 @@
     cursor: pointer;
     transition: .2s height;
     border-left: 6px solid transparent;
+    transition: .3s transform;
   }
 
   .task__inner {
