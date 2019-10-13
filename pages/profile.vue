@@ -3,6 +3,7 @@
     <top/>
     <skills/>
     <achieves/>
+    <img src="/img/wall.svg" alt="">
   </div>
 </template>
 
@@ -19,3 +20,9 @@
     }
   };
 </script>
+
+<style scoped>
+  img {
+    margin: 50px 0 50px 102px;
+  }
+</style>
