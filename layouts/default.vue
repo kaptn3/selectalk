@@ -34,7 +34,7 @@
       'sidebar main';
     grid-template-columns: 245px 1fr;
     grid-template-rows: 72px 1fr;
-    background-color: #E5E5E5;
+    background-color: #f1f1f1;
     min-height: 101vh;
   }
 
