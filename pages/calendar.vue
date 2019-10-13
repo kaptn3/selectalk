@@ -1,6 +1,6 @@
 <template>
   <div>
-    Календарь
+    <img src="/img/calendar.svg" alt="">
   </div>
 </template>
 
@@ -9,3 +9,9 @@
     layout: 'lists'
   };
 </script>
+
+<style scoped>
+  div {
+    margin-top: 50px;
+  }
+</style>
