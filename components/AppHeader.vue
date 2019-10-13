@@ -30,11 +30,11 @@
       return {
         menu: [
           {
-            link: '#',
+            link: 'chat',
             name: 'Чат'
           },
           {
-            link: '#',
+            link: 'rating',
             name: 'Рейтинг'
           },
           {
