@@ -35,6 +35,7 @@
     grid-template-columns: 245px 1fr;
     grid-template-rows: 72px 1fr;
     background-color: #E5E5E5;
+    min-height: 101vh;
   }
 
   .app__sidebar {

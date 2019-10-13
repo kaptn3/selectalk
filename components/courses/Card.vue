@@ -49,11 +49,16 @@
 <style scoped>
   .card {
     background-color: var(--white);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .15);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     font-size: 14px;
+    transition: .2s box-shadow;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .15);
   }
 
   .card__img {

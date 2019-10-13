@@ -95,9 +95,8 @@
     height: 116px;
     overflow: hidden;
     cursor: pointer;
-    transition: .2s height;
     border-left: 6px solid transparent;
-    transition: .3s transform;
+    transition: .3s all;
   }
 
   .task__inner {
