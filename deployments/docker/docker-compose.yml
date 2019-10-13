@@ -1,0 +1,8 @@
+version: "3.7"
+
+services:
+  geth:
+    image: ethereum/client-go
+    volumes:
+      - ~/.ethereum:/root/.ethereum
+    command: --datadir /root/.ethereum --networkid 33 --rpc

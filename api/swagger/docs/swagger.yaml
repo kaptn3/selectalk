@@ -124,7 +124,7 @@ info:
   contact: {}
   license: {}
 paths:
-  /achievements:
+  /api/v1/achievements:
     get:
       description: Retrieve list of courses.
       operationId: get-courses
@@ -139,14 +139,14 @@ paths:
             type: array
         "400": {}
       summary: Get list of courses.
-  /ping:
+  /api/v1/ping:
     get:
       description: ping
       responses:
         "200": {}
         "400": {}
       summary: Ping
-  /tasks/{user_id}:
+  /api/v1/tasks/{user_id}:
     get:
       description: Retrieve list of tasks using user identifier.
       operationId: get-tasks
@@ -167,7 +167,7 @@ paths:
             type: array
         "400": {}
       summary: Get list of tasks by user identifier.
-  /users/{id}:
+  /api/v1/users/{id}:
     get:
       description: Retrieve a user info.
       operationId: get-user

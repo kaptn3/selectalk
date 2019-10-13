@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/spf13/viper"
+	"strings"
 )
 
 type (
@@ -40,6 +41,7 @@ func GetInstance() *Config {
 func setDefault() {
 	setDefaultEnvironment()
 	setDefaultDatabase()
+	setFromEnv()
 }
 
 func setConfig() {
@@ -72,6 +74,15 @@ func setDefaultDatabase() {
 	viperConfig.SetDefault("Database.Password", "selectel")
 	viperConfig.SetDefault("Database.Dialect", "postgres")
 	viperConfig.SetDefault("Database.MigrationsURL", "file://deployments/migrations/postgres")
+}
+
+func setFromEnv() {
+	replacer := strings.NewReplacer(".", "_")
+	viperConfig.SetEnvKeyReplacer(replacer)
+	viperConfig.SetEnvPrefix("HACK_INNOVATION")
+	viperConfig.AutomaticEnv()
+	convertDatabasePortToInteger()
+	setConfig()
 }
 
 // convertDatabasePortToInteger inspects type of Metric.Port value and if it is string converts

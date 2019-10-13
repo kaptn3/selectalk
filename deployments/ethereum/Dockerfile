@@ -1,2 +1,0 @@
-FROM ethereum/client-go
-

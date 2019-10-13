@@ -5,7 +5,7 @@
         "license": {}
     },
     "paths": {
-        "/achievements": {
+        "/api/v1/achievements": {
             "get": {
                 "description": "Retrieve list of courses.",
                 "produces": [
@@ -27,7 +27,7 @@
                 }
             }
         },
-        "/ping": {
+        "/api/v1/ping": {
             "get": {
                 "description": "ping",
                 "summary": "Ping",
@@ -37,7 +37,7 @@
                 }
             }
         },
-        "/tasks/{user_id}": {
+        "/api/v1/tasks/{user_id}": {
             "get": {
                 "description": "Retrieve list of tasks using user identifier.",
                 "produces": [
@@ -68,7 +68,7 @@
                 }
             }
         },
-        "/users/{id}": {
+        "/api/v1/users/{id}": {
             "get": {
                 "description": "Retrieve a user info.",
                 "produces": [

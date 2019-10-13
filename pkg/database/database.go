@@ -85,7 +85,7 @@ func setup() {
 
 func connStrFromConf(c config.DatabaseConfig) string {
 	port := strconv.Itoa(int(c.Port))
-	connStr := "host=%s port=%s user=%s dbname=%s password=%s"
+	connStr := "host=%s port=%s user=%s dbname=%s password=%s sslmode=disable"
 	return fmt.Sprintf(connStr, c.Host, port, c.Username, c.Name, c.Password)
 }
 

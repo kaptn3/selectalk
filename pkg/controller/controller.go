@@ -1,11 +1,11 @@
 package controller
 
 import (
+	"strconv"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/rodsher/selectel/pkg/service"
-	"strconv"
 )
 
 // Ping godoc
@@ -13,7 +13,7 @@ import (
 // @Description ping
 // @Success 200
 // @Failure 400
-// @Router /ping [get]
+// @Router /api/v1/ping [get]
 func Ping(c *gin.Context) {
 	c.JSON(http.StatusOK, map[string]string{
 		"pong": "ok",
@@ -28,7 +28,7 @@ func Ping(c *gin.Context) {
 // @Success 200 {object} model.User
 // @Failure 400
 // @Param id path int true "User ID"
-// @Router /users/{id} [get]
+// @Router /api/v1/users/{id} [get]
 func GetUser(c *gin.Context) {
 	param := c.Param("id")
 	id, err := strconv.Atoi(param)
@@ -44,13 +44,7 @@ func GetUser(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"id":         user.ID,
-		"balance":    user.Balance,
-		"skill":      user.Skill,
-		"position":   user.Position,
-		"department": user.Department,
-	})
+	c.JSON(http.StatusOK, user)
 }
 
 // Task godoc
@@ -61,7 +55,7 @@ func GetUser(c *gin.Context) {
 // @Param user_id path int true "User ID"
 // @Success 200 {array} model.Task
 // @Failure 400
-// @Router /tasks/{user_id} [get]
+// @Router /api/v1/tasks/{user_id} [get]
 func GetTasks(c *gin.Context) {
 	param := c.Param("user_id")
 	id, err := strconv.Atoi(param)
@@ -87,7 +81,7 @@ func GetTasks(c *gin.Context) {
 // @Produce json
 // @Success 200 {array} model.Achievement
 // @Failure 400
-// @Router /achievements [get]
+// @Router /api/v1/achievements [get]
 func GetAchievements(c *gin.Context) {
 	s := service.NewAchievementService()
 	achievements, err := s.Get()
@@ -106,7 +100,7 @@ func GetAchievements(c *gin.Context) {
 // @Produce json
 // @Success 200 {array} model.Course
 // @Failure 400
-// @Router /achievements [get]
+// @Router /api/v1/achievements [get]
 func GetCourses(c *gin.Context) {
 	s := service.NewCourseService()
 	courses, err := s.Get()
