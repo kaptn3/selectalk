@@ -35,6 +35,7 @@
 <style scoped>
   .top {
     background: var(--red) url(/img/bg.jpg) 36% 60% no-repeat;
+    background-size: cover;
     height: 540px;
     margin-top: -72px;
     display: flex;

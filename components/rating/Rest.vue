@@ -30,19 +30,19 @@
             points: '20400'
           },
           {
-            place: 4,
+            place: 5,
             img: '/img/photo-5.png',
             name: 'Владимир',
             points: '20400'
           },
           {
-            place: 4,
+            place: 6,
             img: '/img/photo.jpg',
             name: 'Тирекс',
             points: '20400'
           },
           {
-            place: 4,
+            place: 7,
             img: '/img/photo-7.png',
             name: 'Николай',
             points: '20400'

@@ -34,6 +34,7 @@
   .top {
     height: 337px;
     background: var(--red) url(/img/bg.jpg) 36% 60% no-repeat;
+    background-size: cover;
     margin-top: -72px;
     display: flex;
     align-items: flex-end;
