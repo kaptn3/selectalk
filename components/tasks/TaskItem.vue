@@ -110,6 +110,7 @@
     text-align: center;
     opacity: 0;
     transition: .2s opacity;
+    position: relative;
   }
 
   .task__awards {
@@ -146,6 +147,11 @@
     border-left-color: var(--red);
   }
 
+  .task:hover span,
+  .task:focus span {
+    opacity: 1;
+  }
+
   .task:hover .task__action,
   .task:focus .task__action {
     opacity: 1;
@@ -156,17 +162,58 @@
   }
 
   button {
-    border-radius: 100%;
-    width: 39px;
-    height: 39px;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    transition: .2s background-poisiton-x, .2s width;
+    position: absolute;
+    transform: translateY(-50%);
+  }
+
+  button:hover,
+  button:focus {
+    width: 132px;
+    text-align: right;
+    background-position-x: 10px;
+  }
+
+  button::after {
+    white-space: nowrap;
+    width: 0;
+    display: inline-block;
+    overflow: hidden;
+    transition: .2s width;
+    left: 10px;
+  }
+
+  button:hover::after,
+  button:focus::after {
+    width: 84px;
   }
 
   .task__cancel {
-    background: url(/icons/cancel.png) no-repeat center;
+    background: #fff url(/icons/cancel.png) no-repeat center;
     border: 1px solid #CDCDCD;
+    left: 0;
   }
 
   .task__check {
     background: var(--red) url(/icons/check.png) no-repeat center;
+    right: 20px;
+  }
+
+  .task__cancel::after {
+    content: 'Отменить';
+    opacity: .3;
+  }
+
+  .task__check::after {
+    content: 'Выполнить';
+    color: #fff;
+  }
+
+  .task__cancel:hover,
+  .task__cancel:focus {
+    z-index: 9;
   }
 </style>
