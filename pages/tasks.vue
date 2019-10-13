@@ -38,14 +38,14 @@
       }
     },
     mounted() {
-      axios.get(`${process.env.api}tasks.json`)
+      axios.get(`${process.env.api}tasks/1`)
         .then((res) => {
           for (let i = 0; i < res.data.length; i++) {
             const data = res.data[i];
             let date = new Date(data.ExpirationDate);
             date = `${date.getDate()}.${date.getUTCMonth()}.${date.getUTCFullYear()}`;
 
-            axios.get(`${process.env.api}users/${data.ManagerID}.json`)
+            axios.get(`${process.env.api}users/${data.ManagerID}/`)
               .then((res2) => {
                 this.tasks.push({
                   title: data.Name,

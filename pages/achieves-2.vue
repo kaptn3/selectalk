@@ -31,6 +31,7 @@
 </template>
 
 <script>
+  import axios from 'axios';
   import Card from '../components/achieves/Card';
 
   export default {
@@ -38,22 +39,30 @@
     components: { Card },
     data() {
       return {
-        achieves: [
-          {
-            title: 'День опозданий',
-            img: '/img/achieve.png',
-            points: 600,
-            deadline: 'До 12 окт 2019 г.'
-          },
-          {
-            title: 'Китайский язык',
-            img: '/img/6.png',
-            points: 11000,
-            deadline: 'До 10 окт 2019 г.',
-            pickUp: true
-          }
-        ]
+        img: [
+          '/img/11.png',
+          '/img/10.png',
+          '/img/9.png',
+          '/img/8.png',
+          '/img/7.png'
+        ],
+        achieves: []
       }
+    },
+    mounted() {
+      axios.get(`${process.env.api}achievements`)
+        .then((res) => {
+          for (let i = 0; i < res.data.length; i++) {
+            const data = res.data[i];
+
+            this.achieves.push({
+              img: this.img[i],
+              title: data.Name,
+              points: data.Costs,
+              deadline: `Осталось ${data.Costs - 11400} баллов`
+            })
+          }
+        });
     }
   };
 </script>
@@ -84,11 +93,8 @@
   .nuxt-link-active {
     background-color: var(--red);
     color: #fff;
-  }
-
-  .achieves__btn:nth-child(2) {
-    margin-left: auto;
     margin-right: 20px;
+    margin-left: auto;
   }
 
   .achieves__list {
